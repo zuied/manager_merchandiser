@@ -308,6 +308,10 @@ with colA:
 with colB:
     st.download_button("Unduh Expiry Data CSV", to_csv_bytes(expiry), "expiry_processed.csv", "text/csv")
 
+
+# Sidebar: Safety stock filter
+st.sidebar.image("logo.png", use_container_width=True)
+st.sidebar.title("📊 Dashboard Merchandiser")
 st.sidebar.header("Pengaturan")
 safety_stock = st.sidebar.number_input("Threshold stok rendah (Sisa_Stok)", min_value=0, value=50)
 show_only_low_stock = st.sidebar.checkbox("Tunjukkan hanya stok rendah di tabel", value=False)
@@ -377,7 +381,7 @@ def rag_indicator(value, green_thr, yellow_thr, reverse=False):
         else: return "🔴"
 
 # Dashboard
-st.title("📊 Dashboard KPI Groseri")
+st.title("📊 KPI Groseri")
 
 # KPI Cards dengan expander penjelasan
 with st.expander(f"{rag_indicator(total_sales, 1e8, 5e7)} Sales: Rp {total_sales:,.0f}"):
@@ -421,7 +425,3 @@ with st.expander(f"{rag_indicator(expiry_risk, 100, 500, reverse=True)} Expiry R
 # Tampilkan tabel
 #st.subheader("📊 Perbandingan Target vs Actual Sales")
 #st.dataframe(promo[kolom_tampil])
-
-
-
-
